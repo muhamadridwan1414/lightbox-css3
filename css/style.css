@@ -1,0 +1,188 @@
+
+/* implementasi font-face */
+@font-face {
+	font-family: 'BebasNeue';
+	src: url(../fonts/BebasNeue.woff)format('woff');
+}
+
+body {
+	font: 16px/32px 'BebasNeue', arial, sans-serif;
+	background-color: #3e3e3e;
+}
+
+.judul {
+	font-size: 80px;
+	font-weight: bold;
+	text-align: center;
+	margin: 40px 0;
+	text-shadow: 2px 2px 2px white;
+	letter-spacing: 6px;
+}
+
+.container {
+	width: 600px;
+	background-color: white;
+	margin: auto;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 3px rgba(0,0,0,.3);
+	background-image: linear-gradient(45deg,magenta, seagreen);
+}
+
+.galeri {
+	padding: 5px;
+}
+
+.galeri li,
+/*.galeri li img,*/
+.galeri li span {
+	border-radius: 50%;
+}
+
+.galeri li {
+	float: left;
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	margin: 10px 8px;
+	margin-left: 9px;
+	border: 5px solid rgba(0,0,0,.5);
+	position: relative;
+}
+
+.galeri li img {
+	display: block;
+}
+
+.galeri li span {
+	width: 120px;
+	height: 120px;
+	background-color: rgba(200,200,200,.5);
+	position: absolute;
+	top: 0;
+	text-align: center;
+	line-height: 120px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	opacity: 0;
+	transition: 300ms;
+	transform: scale(0) rotate(0);
+}
+
+.galeri li a:hover span {
+	opacity: 1;
+	transform: scale(1) rotate(360deg);
+}
+
+
+/* overlay style */
+.overlay {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
+	z-index: 999;
+	padding: 110px 0;
+}
+
+.overlay:target {
+	width: auto;
+	height: auto;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.7);
+	transition: .3s;
+}
+
+.overlay img {
+	display: inline-block;
+	margin: auto;
+	max-height: 100%;
+	box-shadow: 2px 2px 4px rgba(0,0,0,.6);
+}
+
+.overlay:target img {
+	animation: animasiGambar .6s;
+}
+
+.overlay .close {
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	margin-left: -20px;
+	text-decoration: none;
+	color: white;
+	background-color: black;
+	border: 1px solid white;
+	line-height: 15px;
+	padding: 5px;
+	opacity: 0;
+}
+
+.overlay:target .close {
+	animation: sampaiBawah .5s .5s forwards;
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+	animation: nextprev .5s .5s forwards;
+}
+
+/* navigasi */
+.next, .prev {
+	width: 57px;
+	height: 93px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	margin-left: 200px;
+	text-indent: -9999px;
+	background-image: url(../img/next.png);
+	opacity: 0;
+}
+
+
+.prev {
+	background-image: url(../img/prev.png);
+	margin-left: -250px;
+}
+
+
+/* animasi */
+
+@keyframes animasiGambar {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes sampaiBawah {
+	0% {
+		margin-top: -40px;
+		opacity: 0;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes nextprev {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
